@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply text-center shadow-none outline-0 border-transparent bg-transparent w-40 text-2xl;
+  }
+}
