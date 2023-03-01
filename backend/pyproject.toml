@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "tdesk"
+version = "0.1.0"
+description = "Tools for generating worksheets"
+authors = ["hoetaek <hoetaek@student.snue.ac.kr>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^4.1.7"
+django-ninja = "^0.21.0"
+django-environ = "^0.9.0"
+python-docx = "^0.8.11"
+hgtk = "^0.1.3"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+isort = "^5.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
