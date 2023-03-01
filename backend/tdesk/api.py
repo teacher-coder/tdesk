@@ -1,44 +1,19 @@
-import io
-
 from django.http import HttpResponse
-from ninja import NinjaAPI, Schema
+from ninja import NinjaAPI
 
-from .utils.difficulty_option import Difficulty, DifficultyOption
-from .utils.puzzle_data import PuzzleData
-from .utils.worksheet import Worksheet
+from .schema import WordsearchSchema
+from .service import make_wordsearch_worksheet
 
 api = NinjaAPI()
 
 
-class Wordsearch(Schema):
-    difficulty: Difficulty
-    is_uppercase: bool
-    is_hint_twist: bool
-    words: list[str]
-
-
-@api.post("/wordsearch/")
+@api.post("/wordsearch")
 def create_wordsearch(
     request,
-    wordsearch: Wordsearch,
+    wordsearch: WordsearchSchema,
 ):
-    difficulty_option = DifficultyOption(wordsearch.difficulty)
-    puzzle_data = PuzzleData(
-        wordsearch.words,
-        difficulty_option,
-        wordsearch.is_uppercase,
-        wordsearch.is_hint_twist,
-    )
-    puzzle_data.make()
-    worksheet = Worksheet(puzzle_data)
-    worksheet.write()
-    worksheet.write_answer()
-    bio = io.BytesIO()
-
-    worksheet.save(bio)
-    bio.seek(0)
     return HttpResponse(
-        bio.getvalue(),
+        make_wordsearch_worksheet(wordsearch),
         headers={
             "Content-Disposition": 'attachment; filename="wordsearch.docx"',
             "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
