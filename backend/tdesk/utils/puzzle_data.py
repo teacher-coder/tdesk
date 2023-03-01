@@ -4,12 +4,11 @@ import re
 import string
 from enum import Enum
 from random import shuffle
-from typing import Tuple, List
+from typing import List, Tuple
 
 import hgtk
 
-
-from .difficulty_option import Difficulty, DifficultyOption
+from .difficulty_option import DifficultyOption
 from .word_position import WordPosition
 
 
