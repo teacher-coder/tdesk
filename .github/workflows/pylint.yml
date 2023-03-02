@@ -16,12 +16,5 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Setup Poetry
       uses: Gr1N/setup-poetry@v8
-    - name: Install dependencies
-      run: |
-        cd backend && poetry install
-    - name: Analysing the code with isort and black
-      run: |
-        cd backend
-        poetry shell
-        isort .
-        black .
+    - name: GitHub Action for pylint
+      uses: cclauss/GitHub-Action-for-pylint@0.7.0
