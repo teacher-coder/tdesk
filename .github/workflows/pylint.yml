@@ -18,7 +18,7 @@ jobs:
       uses: Gr1N/setup-poetry@v8
     - name: Install dependencies
       run: |
-        poetry add pylint
+        cd backend && poetry add pylint
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
