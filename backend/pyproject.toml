@@ -6,7 +6,7 @@ authors = ["hoetaek <hoetaek@student.snue.ac.kr>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8"
 Django = "^4.1.7"
 django-ninja = "^0.21.0"
 django-environ = "^0.9.0"
