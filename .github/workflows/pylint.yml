@@ -18,10 +18,6 @@ jobs:
       uses: Gr1N/setup-poetry@v8
     - name: Install dependencies
       run: |
-        source $HOME/.poetry/env
-        poetry install
-    - name: Install dependencies
-      run: |
         poetry add pylint
     - name: Analysing the code with pylint
       run: |
