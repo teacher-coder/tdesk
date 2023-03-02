@@ -22,5 +22,6 @@ jobs:
     - name: Analysing the code with isort and black
       run: |
         cd backend
+        poetry shell
         isort .
         black .
